@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Test Auth Server</title>
+    </head>
+    <style>
+        #container {
+            max-width: 500px;
+        }
+        h4 {
+            margin-top: 25px;
+        }
+    </style>
+    <body>
+        <main id="container">
+            <h1>OAuth2 Test</h1>
+            <h4><b>Step 1:</b> Get the OAuth URL</h4>
+            <p>Click the button below to get your auth url.</p>
+            <button id="getAuthUrlButton">Get OAuth URL</button>
+            <p id="result"></p>
+            <a href target="_blank" id="authURL">Click to authorize</a>
+
+            <h4>
+                <b>Step 2:</b> Get your code and exchange for an access token
+            </h4>
+            <p>
+                After you're redirected back to your Meet app on Github, copy
+                the code from the URI.
+            </p>
+            <br />
+            <label> Code input <input type="text" id="code" /></label>
+            <button id="getToken">Get Token</button>
+            <p id="accessToken"></p>
+        </main>
+    </body>
+    <script type="text/javascript">
+        const getAuthUrlButton = document.getElementById('getAuthUrlButton');
+        const resultElement = document.getElementById('result');
+        const resultLink = document.getElementById('authURL');
+        const getAuthURL =
+            'https://bfumnimxia.execute-api.eu-central-1.amazonaws.com/dev/api/get-auth-url';
+        const codeValue = document.getElementById('code');
+        const getAccessToken = document.getElementById('getToken');
+        const accessTokenElement = document.getElementById('accessToken');
+        const getToken =
+            'https://bfumnimxia.execute-api.eu-central-1.amazonaws.com/dev/api/token';
+
+        getAuthUrlButton.addEventListener('click', () => {
+            fetch(getAuthURL)
+                .then((response) => {
+                    return response.json();
+                })
+                .then((json) => {
+                    const result = JSON.stringify(json);
+                    const { authUrl } = JSON.parse(result);
+                    resultElement.innerText = result;
+                    resultLink.href = authUrl;
+                });
+        });
+
+        getAccessToken.addEventListener('click', () => {
+            let code = codeValue.value;
+
+            if (decodeURIComponent(code) === code) {
+                code = encodeURIComponent(codeValue.value);
+            }
+            const getTokenRequest = `${getToken}/${code}`;
+            fetch(getTokenRequest)
+                .then((response) => response.json())
+                .then((json) => {
+                    accessTokenElement.innerText = JSON.stringify(json);
+                })
+                .catch((err) => console.error(err));
+        });
+    </script>
+</html>
