@@ -148,3 +148,9 @@ As a user, I want visual charts to represent event data, helping me understand e
 **Given** the user opened an specific event.
 **When** the user navigates to the event details or statistics section
 **Then** the app should display a chart representing the number of upcoming events in each city.
+
+
+### Why Serverless functionality?
+
+The app will use serverless functions for handling the authorization for accessing events from the Google Calendar API. User when logs in and grants consent the Auth is granted. This authorization is granted by serverless functions, which is a way of allowing us to build and maintain a server focusing on the business logic and application functionality. 
+In this case, serverless functionality will create the client-id and token-id through the Google OAuth by secure access to the Google Calendar API. The chosen cloud-service for implementing the serverless functions will be AWS Lambda.
