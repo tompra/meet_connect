@@ -30,10 +30,13 @@ describe('<Event /> component', () => {
         ).toBeInTheDocument();
     });
 
-    // // Event element is collapsed by default
-    // test('by default the event is collapsed', () => {});
-    // // User can expand an event to see details
-    // test('show the details section when the user clicks on the "show details" button', () => {});
-    // // User can collapse an event to hide details
-    // test('hide the details section when the user clicks on the "hide details" button', () => {});
+    //Default behaviour details are collapsed
+    test('default behaviour details are collapsed', () => {
+        expect(EventComponent.queryByText('Show details')).toBeInTheDocument();
+        expect(EventComponent.queryByText('Hide details')).toBeNull();
+    });
+
+    //Show details when user clicks button 'show details'
+
+    //Hide details when user clicks button 'hide details'
 });

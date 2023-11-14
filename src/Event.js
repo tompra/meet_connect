@@ -1,4 +1,12 @@
+import { useState } from 'react';
+
 const Event = ({ event }) => {
+    const [showHideBtn, setShowHideBtn] = useState(false);
+
+    const handleDetails = () => {
+        setShowHideBtn(true);
+    };
+
     return (
         <li>
             <p>
@@ -10,6 +18,9 @@ const Event = ({ event }) => {
             <p>
                 Location: <span>{event.location}</span>
             </p>
+            <button onClick={handleDetails}>
+                {showHideBtn ? 'Hide details' : 'Show details'}
+            </button>
         </li>
     );
 };
