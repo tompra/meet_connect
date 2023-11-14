@@ -45,4 +45,10 @@ describe('<Event /> component', () => {
     });
 
     //Hide details when user clicks button 'hide details'
+    test('hide details when user click button "hide details"', async () => {
+        const user = userEvent.setup();
+        const hideDetails = EventComponent.queryByText('Hide details');
+        await user.click(hideDetails);
+        expect(EventComponent.queryByText('Show details')).toBeInTheDocument();
+    });
 });
