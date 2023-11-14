@@ -1,7 +1,7 @@
 import Event from '../Event';
 import { getEvents } from '../api';
 import { render } from '@testing-library/react';
-import { UserEvent } from '@testing-library/user-event';
+import userEvent from '@testing-library/user-event';
 
 describe('<Event /> component', () => {
     let EventComponent;
@@ -37,6 +37,12 @@ describe('<Event /> component', () => {
     });
 
     //Show details when user clicks button 'show details'
+    test('show details when user clicks button "show details"', async () => {
+        const user = userEvent.setup();
+        const showDetails = EventComponent.queryByText('Show details');
+        await user.click(showDetails);
+        expect(EventComponent.queryByText('Hide details')).toBeInTheDocument();
+    });
 
     //Hide details when user clicks button 'hide details'
 });
