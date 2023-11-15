@@ -1,5 +1,20 @@
+import { useState } from 'react';
+
 const NumberOfEvents = () => {
-    return <input type='number' min='32' id='number-of-events' />;
+    const [value, setValue] = useState('32');
+
+    const handleChange = (e) => {
+        setValue(e.target.value);
+    };
+
+    return (
+        <input
+            type='number'
+            value={value}
+            id='number-of-events'
+            onChange={handleChange}
+        />
+    );
 };
 
 export default NumberOfEvents;
