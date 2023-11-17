@@ -6,20 +6,22 @@ describe('<NumberOfEvents /> component', () => {
     let NumberOfEventsComponent;
 
     beforeEach(() => {
-        NumberOfEventsComponent = render(<NumberOfEvents />);
+        NumberOfEventsComponent = render(
+            <NumberOfEvents setCurrentNOE={() => {}} />
+        );
     });
     // input field contains the input number element
     test('default number of event display', () => {
-        const numberEventBox =
-            NumberOfEventsComponent.queryByRole('spinbutton');
+        const numberEventBox = NumberOfEventsComponent.queryByRole('textbox');
         expect(numberEventBox).toBeInTheDocument();
     });
     // default number of 32 event displayed
-    test('32 as default number of events displayed', () => {
+    test('32 as default number of events displayed', async () => {
         const numberEventBox =
             NumberOfEventsComponent.container.querySelector(
                 '#number-of-events'
             );
+
         expect(numberEventBox.value).toBe('32');
     });
     // user text input changes

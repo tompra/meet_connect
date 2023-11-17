@@ -4,7 +4,7 @@ const Event = ({ event }) => {
     const [showHideBtn, setShowHideBtn] = useState(false);
 
     const handleDetails = () => {
-        setShowHideBtn(true);
+        setShowHideBtn(!showHideBtn);
     };
 
     return (
