@@ -1,4 +1,6 @@
 import { useEffect, useState } from 'react';
+import { InputGroup, Form, ListGroup } from 'react-bootstrap';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 const CitySearch = ({ allLocations, setCurrentCity }) => {
     const [showSuggestions, setShowSuggestions] = useState(false);
@@ -31,28 +33,39 @@ const CitySearch = ({ allLocations, setCurrentCity }) => {
 
     return (
         <div id='city-search'>
-            <input
-                type='text'
-                className='city'
-                placeholder='Search for a city'
-                value={query}
-                onFocus={() => setShowSuggestions(true)}
-                onChange={handleInputChanged}
-            />
-            {showSuggestions ? (
-                <ul className='suggestions'>
-                    {suggestions.map((suggestion) => {
-                        return (
-                            <li onClick={handleItemClicked} key={suggestion}>
-                                {suggestion}
-                            </li>
-                        );
-                    })}
-                    <li key='See all cities' onClick={handleItemClicked}>
-                        <b>See all cities</b>
-                    </li>
-                </ul>
-            ) : null}
+            <InputGroup className='mb-3 d-flex flex-column'>
+                <Form.Control
+                    type='text'
+                    className='city w-100 rounded'
+                    placeholder='Search for a city...'
+                    value={query}
+                    onFocus={() => setShowSuggestions(true)}
+                    onChange={handleInputChanged}
+                />
+
+                {showSuggestions ? (
+                    <ListGroup as='ul' className='suggestions rounded '>
+                        {suggestions.map((suggestion) => {
+                            return (
+                                <ListGroup.Item
+                                    onClick={handleItemClicked}
+                                    key={suggestion}
+                                    as='li'
+                                >
+                                    {suggestion}
+                                </ListGroup.Item>
+                            );
+                        })}
+                        <ListGroup.Item
+                            key='See all cities'
+                            onClick={handleItemClicked}
+                            as='li'
+                        >
+                            <b>See all cities</b>
+                        </ListGroup.Item>
+                    </ListGroup>
+                ) : null}
+            </InputGroup>
         </div>
     );
 };

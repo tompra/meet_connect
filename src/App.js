@@ -1,4 +1,5 @@
 import './App.css';
+import 'bootstrap/dist/css/bootstrap.min.css';
 import EventList from './EventList';
 import CitySearch from './CitySearch';
 import NumberOfEvents from './NumberOfEvents';
@@ -27,13 +28,17 @@ const App = () => {
     }, [currentCity, currentNOE]);
 
     return (
-        <div className='App'>
-            <CitySearch
-                allLocations={allLocations}
-                setCurrentCity={setCurrentCity}
-            />
-            <NumberOfEvents setCurrentNOE={setCurrentNOE} />
-            <EventList events={events} />
+        <div className='App container-fluid pt-5'>
+            <div className='d-flex justify-content-center flex-column align-items-center'>
+                <CitySearch
+                    allLocations={allLocations}
+                    setCurrentCity={setCurrentCity}
+                />
+                <NumberOfEvents setCurrentNOE={setCurrentNOE} />
+            </div>
+            <div className='d-flex justify-content-center flex-column align-items-center'>
+                <EventList events={events} />
+            </div>
         </div>
     );
 };
