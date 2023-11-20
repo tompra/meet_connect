@@ -1,24 +1,14 @@
+@import url(https://fonts.googleapis.com/css?family=Roboto:500);
 .App {
-    background: rgb(63, 94, 251);
-    background: radial-gradient(
-        circle,
-        rgba(63, 94, 251, 1) 0%,
-        rgba(125, 76, 240, 1) 80%
-    );
+    background-image: linear-gradient(to right, #141e30, #243b55);
+
     min-height: 100vh;
+}
+.suggestions,
+input[type='text'] {
+    width: 18rem;
 }
 .suggestions > li:hover {
     background-color: #0d6efd;
     color: white;
-}
-#city-search,
-#event-list {
-    width: 25%;
-}
-
-.number-events-container {
-    flex-grow: 1;
-}
-input {
-    outline: none;
 }

@@ -1,5 +1,4 @@
 import { useState } from 'react';
-import { Button, Card } from 'react-bootstrap';
 
 const Event = ({ event }) => {
     const [showHideBtn, setShowHideBtn] = useState(false);
@@ -8,27 +7,26 @@ const Event = ({ event }) => {
         setShowHideBtn(!showHideBtn);
     };
 
-    const formatDate = (created) => {
-        return new Date(created).toLocaleDateString();
-    };
-
     return (
-        <Card style={{ margin: '15px 0' }}>
-            <Card.Body>
-                <Card.Title>
+        <li
+            className='card my-3 bg-secondary-subtle'
+            style={{ width: '22rem' }}
+        >
+            <div className='card-body d-flex flex-column justify-content-center align-items-center'>
+                <h5 className='card-title'>
                     Title: <span>{event.summary}</span>
-                </Card.Title>
-                <Card.Text>
-                    Start time: <span>{formatDate(event.created)}</span>
-                </Card.Text>
-                <Card.Text>
+                </h5>
+                <p className='card-text'>
+                    Start time: <span>{event.created}</span>
+                </p>
+                <p className='card-text'>
                     Location: <span>{event.location}</span>
-                </Card.Text>
-                <Button onClick={handleDetails}>
+                </p>
+                <button className='btn btn-primary' onClick={handleDetails}>
                     {showHideBtn ? 'Hide details' : 'Show details'}
-                </Button>
-            </Card.Body>
-        </Card>
+                </button>
+            </div>
+        </li>
     );
 };
 

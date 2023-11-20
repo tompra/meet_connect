@@ -1,5 +1,4 @@
 import { useEffect, useState } from 'react';
-import { InputGroup, Form, ListGroup } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 const CitySearch = ({ allLocations, setCurrentCity }) => {
@@ -32,40 +31,40 @@ const CitySearch = ({ allLocations, setCurrentCity }) => {
     };
 
     return (
-        <div id='city-search'>
-            <InputGroup className='mb-3 d-flex flex-column'>
-                <Form.Control
-                    type='text'
-                    className='city w-100 rounded'
-                    placeholder='Search for a city...'
-                    value={query}
-                    onFocus={() => setShowSuggestions(true)}
-                    onChange={handleInputChanged}
-                />
-
-                {showSuggestions ? (
-                    <ListGroup as='ul' className='suggestions rounded '>
-                        {suggestions.map((suggestion) => {
-                            return (
-                                <ListGroup.Item
-                                    onClick={handleItemClicked}
-                                    key={suggestion}
-                                    as='li'
-                                >
-                                    {suggestion}
-                                </ListGroup.Item>
-                            );
-                        })}
-                        <ListGroup.Item
-                            key='See all cities'
-                            onClick={handleItemClicked}
-                            as='li'
-                        >
-                            <b>See all cities</b>
-                        </ListGroup.Item>
-                    </ListGroup>
-                ) : null}
-            </InputGroup>
+        <div
+            id='city-search'
+            className='d-flex justify-content-center flex-column align-items-center'
+        >
+            <input
+                type='text'
+                className='city form-control'
+                placeholder='Search for a city...'
+                value={query}
+                onFocus={() => setShowSuggestions(true)}
+                onChange={handleInputChanged}
+            />
+            {showSuggestions ? (
+                <ul className='suggestions list-group'>
+                    {suggestions.map((suggestion) => {
+                        return (
+                            <li
+                                onClick={handleItemClicked}
+                                key={suggestion}
+                                className='list-group-item'
+                            >
+                                {suggestion}
+                            </li>
+                        );
+                    })}
+                    <li
+                        key='See all cities'
+                        onClick={handleItemClicked}
+                        className='list-group-item'
+                    >
+                        <b>See all cities</b>
+                    </li>
+                </ul>
+            ) : null}
         </div>
     );
 };

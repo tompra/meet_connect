@@ -17,7 +17,9 @@ describe('<CitySearch /> component', () => {
     });
 
     test('suggestions list in hidden by default', () => {
-        const suggestionList = CitySearchComponent.queryByRole('list');
+        const suggestionList = CitySearchComponent.queryByRole('list', {
+            name: 'suggestions',
+        });
         expect(suggestionList).not.toBeInTheDocument();
     });
 

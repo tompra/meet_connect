@@ -29,16 +29,12 @@ const App = () => {
 
     return (
         <div className='App container-fluid pt-5'>
-            <div className='d-flex justify-content-center flex-column align-items-center'>
-                <CitySearch
-                    allLocations={allLocations}
-                    setCurrentCity={setCurrentCity}
-                />
-                <NumberOfEvents setCurrentNOE={setCurrentNOE} />
-            </div>
-            <div className='d-flex justify-content-center flex-column align-items-center'>
-                <EventList events={events} />
-            </div>
+            <CitySearch
+                allLocations={allLocations}
+                setCurrentCity={setCurrentCity}
+            />
+            <NumberOfEvents setCurrentNOE={setCurrentNOE} />
+            <EventList events={events} />
         </div>
     );
 };
