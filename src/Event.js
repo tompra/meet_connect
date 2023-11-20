@@ -22,9 +22,26 @@ const Event = ({ event }) => {
                 <p className='card-text'>
                     Location: <span>{event.location}</span>
                 </p>
-                <button className='btn btn-primary' onClick={handleDetails}>
+                <button
+                    className='btn btn-primary details-btn'
+                    onClick={handleDetails}
+                >
                     {showHideBtn ? 'Hide details' : 'Show details'}
                 </button>
+                {showHideBtn ? (
+                    <div className='details bg-primary text-white rounded p-3'>
+                        <h5 className='card-title'>Event Details</h5>
+                        <p className='card-text'>
+                            Description: <span>{event.description}</span>
+                        </p>
+                        <p className='card-text text-bold'>
+                            Status:{' '}
+                            <span className='text-capitalize'>
+                                {event.status}
+                            </span>
+                        </p>
+                    </div>
+                ) : null}
             </div>
         </li>
     );
