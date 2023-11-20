@@ -9,7 +9,7 @@ const Event = ({ event }) => {
 
     return (
         <li
-            className='card my-3 bg-secondary-subtle'
+            className='card bg-secondary-subtle mb-3'
             style={{ width: '22rem' }}
         >
             <div className='card-body d-flex flex-column justify-content-center align-items-center'>
