@@ -1,11 +1,13 @@
 import { useState } from 'react';
 
-const Event = ({ event }) => {
+const Event = ({ event, index }) => {
     const [showHideBtn, setShowHideBtn] = useState(false);
 
     const handleDetails = () => {
         setShowHideBtn(!showHideBtn);
     };
+
+    const detailsAlignment = index % 2 === 0 ? 'right-aligned' : 'left-aligned';
 
     return (
         <li
@@ -29,7 +31,9 @@ const Event = ({ event }) => {
                     {showHideBtn ? 'Hide details' : 'Show details'}
                 </button>
                 {showHideBtn ? (
-                    <div className='details bg-primary text-white rounded p-3'>
+                    <div
+                        className={`details bg-primary text-white rounded p-3 ${detailsAlignment}`}
+                    >
                         <h5 className='card-title'>Event Details</h5>
                         <p className='card-text'>
                             Description: <span>{event.description}</span>

@@ -7,7 +7,9 @@ const EventList = ({ events }) => {
             className='d-flex justify-content-center align-items-center flex-column m-0'
         >
             {events
-                ? events.map((event) => <Event event={event} key={event.id} />)
+                ? events.map((event, index) => (
+                      <Event event={event} index={index} key={event.id} />
+                  ))
                 : null}
         </ul>
     );

@@ -24,7 +24,15 @@ input[type='text'] {
     position: absolute;
     z-index: 2;
     top: 0;
-    left: 100%;
     box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
     width: 100%;
+}
+.right-aligned {
+    left: auto;
+    right: 100%;
+}
+
+.left-aligned {
+    left: 100%;
+    right: auto;
 }
