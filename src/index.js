@@ -16,4 +16,5 @@ root.render(
 );
 serviceWorkerRegistration.unregister();
 reportWebVitals();
+
 atatus.notify(new Error('Test Atatus Setup'));
