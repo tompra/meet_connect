@@ -33,7 +33,6 @@ describe('<EventList /> integration', () => {
             const EventListItems =
                 within(EventListDOM).queryAllByRole('listitem');
             expect(EventListItems.length).toBe(32);
-            // expect(EventListItems.length).toBeGreaterThanOrEqual(0);
         });
     });
 });
