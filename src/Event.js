@@ -11,41 +11,43 @@ const Event = ({ event, index }) => {
 
     return (
         <li
-            className='card bg-secondary-subtle mb-3'
-            style={{ width: '22rem' }}
+            className='bg-secondary-subtle mb-3 rounded'
+            style={{ width: '100%', maxWidth: '22rem' }}
         >
-            <div className='card-body d-flex flex-column justify-content-center align-items-center'>
-                <h5 className='card-title'>
-                    Title: <span>{event.summary}</span>
-                </h5>
-                <p className='card-text'>
-                    Start time: <span>{event.created}</span>
-                </p>
-                <p className='card-text'>
-                    Location: <span>{event.location}</span>
-                </p>
-                <button
-                    className='btn btn-primary details-btn'
-                    onClick={handleDetails}
-                >
-                    {showHideBtn ? 'Hide details' : 'Show details'}
-                </button>
-                {showHideBtn ? (
-                    <div
-                        className={`details bg-primary text-white rounded p-3 ${detailsAlignment}`}
+            <div className='card'>
+                <div className='card-body d-flex flex-column justify-content-center align-items-center'>
+                    <h5 className='card-title'>
+                        Title: <span>{event.summary}</span>
+                    </h5>
+                    <p className='card-text'>
+                        Start time: <span>{event.created}</span>
+                    </p>
+                    <p className='card-text'>
+                        Location: <span>{event.location}</span>
+                    </p>
+                    <button
+                        className='btn btn-primary details-btn'
+                        onClick={handleDetails}
                     >
-                        <h5 className='card-title'>Event Details</h5>
-                        <p className='card-text'>
-                            Description: <span>{event.description}</span>
-                        </p>
-                        <p className='card-text text-bold'>
-                            Status:{' '}
-                            <span className='text-capitalize'>
-                                {event.status}
-                            </span>
-                        </p>
-                    </div>
-                ) : null}
+                        {showHideBtn ? 'Hide details' : 'Show details'}
+                    </button>
+                    {showHideBtn ? (
+                        <div
+                            className={`details bg-primary text-white rounded p-3 ${detailsAlignment}`}
+                        >
+                            <h5 className='card-title'>Event Details</h5>
+                            <p className='card-text'>
+                                Description: <span>{event.description}</span>
+                            </p>
+                            <p className='card-text text-bold'>
+                                Status:{' '}
+                                <span className='text-capitalize'>
+                                    {event.status}
+                                </span>
+                            </p>
+                        </div>
+                    ) : null}
+                </div>
             </div>
         </li>
     );

@@ -33,18 +33,18 @@ const CitySearch = ({ allLocations, setCurrentCity }) => {
     return (
         <div
             id='city-search'
-            className='d-flex justify-content-center flex-column align-items-center'
+            className='form-group d-flex justify-content-center flex-column align-items-center'
         >
             <input
                 type='text'
-                className='city form-control'
+                className='form-control city'
                 placeholder='Search for a city...'
                 value={query}
                 onFocus={() => setShowSuggestions(true)}
                 onChange={handleInputChanged}
             />
             {showSuggestions ? (
-                <ul className='suggestions list-group'>
+                <ul className='list-group suggestions'>
                     {suggestions.map((suggestion) => {
                         return (
                             <li

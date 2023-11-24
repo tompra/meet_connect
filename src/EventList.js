@@ -4,7 +4,7 @@ const EventList = ({ events }) => {
     return (
         <ul
             id='event-list'
-            className='d-flex justify-content-center align-items-center flex-column m-0'
+            className='list-group d-flex justify-content-center align-items-center flex-column m-0'
         >
             {events
                 ? events.map((event, index) => (

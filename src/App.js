@@ -28,13 +28,19 @@ const App = () => {
     }, [currentCity, currentNOE]);
 
     return (
-        <div className='App container-fluid pt-5'>
-            <CitySearch
-                allLocations={allLocations}
-                setCurrentCity={setCurrentCity}
-            />
-            <NumberOfEvents setCurrentNOE={setCurrentNOE} />
-            <EventList events={events} />
+        <div className='App container-fluid pt-5 d-flex flex-column justify-content-center align-items-center'>
+            <div className='col-md-4'>
+                <CitySearch
+                    allLocations={allLocations}
+                    setCurrentCity={setCurrentCity}
+                />
+            </div>
+            <div className='col-md-4'>
+                <NumberOfEvents setCurrentNOE={setCurrentNOE} />
+            </div>
+            <div className='col-md-4'>
+                <EventList events={events} />
+            </div>
         </div>
     );
 };
