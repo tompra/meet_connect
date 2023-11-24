@@ -1,16 +1,16 @@
 {
   "files": {
-    "main.css": "/MeetConnect/static/css/main.83addd09.css",
-    "main.js": "/MeetConnect/static/js/main.aed9a2a8.js",
+    "main.css": "/MeetConnect/static/css/main.5407e53f.css",
+    "main.js": "/MeetConnect/static/js/main.fa8d3209.js",
     "static/js/787.0f140951.chunk.js": "/MeetConnect/static/js/787.0f140951.chunk.js",
     "service-worker.js": "/MeetConnect/service-worker.js",
     "index.html": "/MeetConnect/index.html",
-    "main.83addd09.css.map": "/MeetConnect/static/css/main.83addd09.css.map",
-    "main.aed9a2a8.js.map": "/MeetConnect/static/js/main.aed9a2a8.js.map",
+    "main.5407e53f.css.map": "/MeetConnect/static/css/main.5407e53f.css.map",
+    "main.fa8d3209.js.map": "/MeetConnect/static/js/main.fa8d3209.js.map",
     "787.0f140951.chunk.js.map": "/MeetConnect/static/js/787.0f140951.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.83addd09.css",
-    "static/js/main.aed9a2a8.js"
+    "static/css/main.5407e53f.css",
+    "static/js/main.fa8d3209.js"
   ]
 }
