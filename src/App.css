@@ -37,6 +37,12 @@ input[type='text'] {
     left: 100%;
     right: auto;
 }
+.alerts-container {
+    position: fixed;
+    top: 0px;
+    margin: auto 0;
+    z-index: 1000;
+}
 
 @media (max-width: 768px) {
     .right-aligned,

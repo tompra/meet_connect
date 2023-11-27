@@ -7,7 +7,13 @@ import App from '../App';
 describe('<CitySearch /> component', () => {
     let CitySearchComponent;
     beforeEach(() => {
-        CitySearchComponent = render(<CitySearch allLocations={[]} />);
+        CitySearchComponent = render(
+            <CitySearch
+                allLocations={[]}
+                setCurrentCity={() => {}}
+                setInfoAlert={() => {}}
+            />
+        );
     });
 
     test('render text input', () => {
@@ -37,7 +43,7 @@ describe('<CitySearch /> component', () => {
         const allEvents = await getEvents();
         const allLocations = extractLocations(allEvents);
         CitySearchComponent.rerender(
-            <CitySearch allLocations={allLocations} />
+            <CitySearch allLocations={allLocations} setInfoAlert={() => {}} />
         );
 
         //user types "Berlin" in city textbox
@@ -69,7 +75,11 @@ describe('<CitySearch /> component', () => {
         const allEvents = await getEvents();
         const allLocations = extractLocations(allEvents);
         CitySearchComponent.rerender(
-            <CitySearch allLocations={allLocations} setCurrentCity={() => {}} />
+            <CitySearch
+                allLocations={allLocations}
+                setCurrentCity={() => {}}
+                setInfoAlert={() => {}}
+            />
         );
 
         const cityTextBox = CitySearchComponent.queryByRole('textbox');
@@ -89,7 +99,7 @@ describe('<CitySearch /> component', () => {
         const allLocations = extractLocations(allEvents);
         // Rerender CitySearchComponent
         CitySearchComponent.rerender(
-            <CitySearch allLocations={allLocations} />
+            <CitySearch allLocations={allLocations} setInfoAlert={() => {}} />
         );
 
         // Locate input field

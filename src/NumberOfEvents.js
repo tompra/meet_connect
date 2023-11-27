@@ -1,6 +1,7 @@
 const NumberOfEvents = ({ setCurrentNOE }) => {
     const handleChange = (e) => {
         setCurrentNOE(e.target.value);
+        console.log(isNaN(e.target.value));
     };
 
     return (
