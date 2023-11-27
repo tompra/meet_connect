@@ -6,13 +6,16 @@
 .suggestions {
     position: absolute;
     z-index: 3;
-    top: 9%;
+    top: 10%;
     box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 }
 .suggestions,
 input[type='text'] {
     max-width: 18rem;
     width: 100%;
+}
+.suggestions > li {
+    padding: 0 10px;
 }
 .suggestions > li:hover {
     background-color: #0d6efd;
@@ -39,8 +42,8 @@ input[type='text'] {
 }
 .alerts-container {
     position: fixed;
-    top: 0px;
-    margin: auto 0;
+    top: 5%;
+    left: 0px;
     z-index: 1000;
 }
 

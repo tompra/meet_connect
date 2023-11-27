@@ -1,7 +1,14 @@
-const NumberOfEvents = ({ setCurrentNOE }) => {
+const NumberOfEvents = ({ setCurrentNOE, setWarningAlert }) => {
     const handleChange = (e) => {
-        setCurrentNOE(e.target.value);
-        console.log(isNaN(e.target.value));
+        let warningText;
+        const userInput = e.target.value;
+        if (isNaN(userInput) || parseFloat(userInput) <= 0) {
+            warningText = 'Invalid input. Please try a valid number.';
+        } else {
+            warningText = '';
+            setCurrentNOE(userInput);
+        }
+        setWarningAlert(warningText);
     };
 
     return (

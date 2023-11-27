@@ -44,6 +44,7 @@ const CitySearch = ({ allLocations, setCurrentCity, setInfoAlert }) => {
             id='city-search'
             className='form-group d-flex justify-content-center flex-column align-items-center'
         >
+            <h2 className='text-white'>MeetConnect</h2>
             <input
                 type='text'
                 className='form-control city'

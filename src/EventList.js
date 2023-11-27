@@ -4,11 +4,17 @@ const EventList = ({ events }) => {
     return (
         <ul
             id='event-list'
-            className='list-group d-flex justify-content-center align-items-center flex-column m-0'
+            className='list-group d-flex flex-wrap justify-content-center align-items-center m-0'
         >
             {events
                 ? events.map((event, index) => (
-                      <Event event={event} index={index} key={event.id} />
+                      <li
+                          key={event.id}
+                          className='mx-2 mb-3 '
+                          style={{ width: '100%', maxWidth: '22rem' }}
+                      >
+                          <Event event={event} index={index} />
+                      </li>
                   ))
                 : null}
         </ul>

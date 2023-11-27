@@ -1,6 +1,6 @@
 import Event from '../Event';
 import { getEvents } from '../api';
-import { render } from '@testing-library/react';
+import { render, waitFor } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 
 describe('<Event /> component', () => {
@@ -10,23 +10,18 @@ describe('<Event /> component', () => {
         allEvents = await getEvents();
         EventComponent = render(<Event event={allEvents[0]} />);
     });
-    //Event element has event's title
-    test('renders event title', () => {
-        expect(
-            EventComponent.queryByText(allEvents[0].summary)
-        ).toBeInTheDocument();
-    });
-    //Event element has event's start time
-    test('renders event start time', () => {
-        expect(
-            EventComponent.queryByText(allEvents[0].created)
-        ).toBeInTheDocument();
-    });
-    //Event element has event's location
-    test('renders event location', () => {
-        expect(
-            EventComponent.queryByText(allEvents[0].location)
-        ).toBeInTheDocument();
+    //Event element has event's title, start time and event's location.
+    test('renders events title, start time, and location', async () => {
+        console.log(allEvents[0].created);
+        await waitFor(() => {
+            expect(
+                EventComponent.getByText('Learn JavaScript')
+            ).toBeInTheDocument();
+            expect(
+                EventComponent.getByText('19 May 2020 at 21:17:46')
+            ).toBeInTheDocument();
+            expect(EventComponent.getByText('London, UK')).toBeInTheDocument();
+        });
     });
 
     //Default behaviour details are collapsed
