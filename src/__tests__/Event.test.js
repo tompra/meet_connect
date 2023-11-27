@@ -12,7 +12,6 @@ describe('<Event /> component', () => {
     });
     //Event element has event's title, start time and event's location.
     test('renders events title, start time, and location', async () => {
-        console.log(allEvents[0].created);
         await waitFor(() => {
             expect(
                 EventComponent.getByText('Learn JavaScript')
