@@ -5,7 +5,7 @@ import CitySearch from './CitySearch';
 import NumberOfEvents from './NumberOfEvents';
 import { useEffect, useState } from 'react';
 import { getEvents, extractLocations } from './api';
-import { InfoAlert, WarningAlert } from './Alert';
+import { InfoAlert, WarningAlert, DangerAlert } from './Alert';
 
 const App = () => {
     const [events, setEvents] = useState([]);
@@ -14,6 +14,7 @@ const App = () => {
     const [currentCity, setCurrentCity] = useState('See all cities');
     const [infoAlert, setInfoAlert] = useState('');
     const [warningAlert, setWarningAlert] = useState('');
+    const [dangerAlert, setDangerAlert] = useState('');
 
     const fetchData = async () => {
         try {
@@ -34,6 +35,13 @@ const App = () => {
     };
 
     useEffect(() => {
+        let dangerTxt;
+        if (navigator.onLine) {
+            dangerTxt = '';
+        } else {
+            dangerTxt = 'You are offline. Events must not be updated';
+            setDangerAlert(dangerTxt);
+        }
         fetchData();
     }, [currentCity, currentNOE]);
 
@@ -44,6 +52,9 @@ const App = () => {
                     {infoAlert.length ? <InfoAlert text={infoAlert} /> : null}
                     {warningAlert.length ? (
                         <WarningAlert text={warningAlert} />
+                    ) : null}
+                    {dangerAlert.length ? (
+                        <DangerAlert text={dangerAlert} />
                     ) : null}
                 </div>
                 <div className='col-md-6 mt-2'>

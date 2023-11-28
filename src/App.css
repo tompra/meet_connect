@@ -54,4 +54,7 @@ input[type='text'] {
         right: 0;
         left: 0;
     }
+    .alerts-container {
+        top: 0%;
+    }
 }
