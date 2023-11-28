@@ -23,8 +23,7 @@ const CitySearch = ({ allLocations, setCurrentCity, setInfoAlert }) => {
         setQuery(value);
         setSuggestions(filteredLocations);
         if (filteredLocations.length === 0) {
-            infoText =
-                'We can not find the city you are looking for. Please try another city';
+            infoText = 'Please try another city';
         } else {
             infoText = '';
         }

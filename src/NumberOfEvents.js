@@ -3,7 +3,7 @@ const NumberOfEvents = ({ setCurrentNOE, setWarningAlert }) => {
         let warningText;
         const userInput = e.target.value;
         if (isNaN(userInput) || parseFloat(userInput) <= 0) {
-            warningText = 'Invalid input. Please try a valid number.';
+            warningText = 'Please try a valid number.';
         } else {
             warningText = '';
             setCurrentNOE(userInput);
