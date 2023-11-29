@@ -46,6 +46,27 @@ input[type='text'] {
     left: 0px;
     z-index: 1000;
 }
+.google-logo {
+    width: 1.2rem;
+    margin: 5px;
+    animation: fadeIn 1.5s ease-in-out;
+}
+.meet-logo {
+    border-radius: 10px;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    animation: fadeIn 1.5s ease-in-out;
+}
+
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+        transform: scale(0);
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
 
 @media (max-width: 768px) {
     .right-aligned,
