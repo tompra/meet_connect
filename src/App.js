@@ -3,10 +3,9 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import EventList from './EventList';
 import CitySearch from './CitySearch';
 import NumberOfEvents from './NumberOfEvents';
-import Welcome from './Welcome';
 import Spinner from './Spinner';
 import { useEffect, useState } from 'react';
-import { getEvents, extractLocations, getAccessToken } from './api';
+import { getEvents, extractLocations } from './api';
 import { InfoAlert, WarningAlert, DangerAlert } from './Alert';
 
 const App = () => {
@@ -52,14 +51,8 @@ const App = () => {
     return (
         <div className='App container-fluid pt-2 '>
             <div className='row d-flex flex-column justify-content-center align-items-center'>
-                {!localStorage.getItem('access_token') ? (
-                    <Welcome
-                        getAccessToken={async () => {
-                            const authUrl = await getAccessToken();
-                            console.log('authUrl from APP', authUrl);
-                            return { authUrl };
-                        }}
-                    />
+                {loading ? (
+                    <Spinner />
                 ) : (
                     <>
                         <div className='col-md-4 alerts-container'>
@@ -73,28 +66,22 @@ const App = () => {
                                 <DangerAlert text={dangerAlert} />
                             ) : null}
                         </div>
-                        {loading ? (
-                            <Spinner />
-                        ) : (
-                            <>
-                                <div className='col-md-6 mt-2'>
-                                    <CitySearch
-                                        allLocations={allLocations}
-                                        setCurrentCity={setCurrentCity}
-                                        setInfoAlert={setInfoAlert}
-                                    />
-                                </div>
-                                <div className='col-md-6'>
-                                    <NumberOfEvents
-                                        setCurrentNOE={setCurrentNOE}
-                                        setWarningAlert={setWarningAlert}
-                                    />
-                                </div>
-                                <div className='col-md-6'>
-                                    <EventList events={events} />
-                                </div>
-                            </>
-                        )}
+                        <div className='col-md-6 mt-2'>
+                            <CitySearch
+                                allLocations={allLocations}
+                                setCurrentCity={setCurrentCity}
+                                setInfoAlert={setInfoAlert}
+                            />
+                        </div>
+                        <div className='col-md-6'>
+                            <NumberOfEvents
+                                setCurrentNOE={setCurrentNOE}
+                                setWarningAlert={setWarningAlert}
+                            />
+                        </div>
+                        <div className='col-md-6'>
+                            <EventList events={events} />
+                        </div>
                     </>
                 )}
             </div>
