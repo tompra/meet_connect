@@ -1,17 +1,17 @@
 {
   "files": {
     "main.css": "/MeetConnect/static/css/main.1274f17a.css",
-    "main.js": "/MeetConnect/static/js/main.c43be141.js",
+    "main.js": "/MeetConnect/static/js/main.36ba3d50.js",
     "static/js/787.0f140951.chunk.js": "/MeetConnect/static/js/787.0f140951.chunk.js",
     "service-worker.js": "/MeetConnect/service-worker.js",
     "static/media/google-logo.png": "/MeetConnect/static/media/google-logo.39c52b1bcccb20569aa4.png",
     "index.html": "/MeetConnect/index.html",
     "main.1274f17a.css.map": "/MeetConnect/static/css/main.1274f17a.css.map",
-    "main.c43be141.js.map": "/MeetConnect/static/js/main.c43be141.js.map",
+    "main.36ba3d50.js.map": "/MeetConnect/static/js/main.36ba3d50.js.map",
     "787.0f140951.chunk.js.map": "/MeetConnect/static/js/787.0f140951.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.1274f17a.css",
-    "static/js/main.c43be141.js"
+    "static/js/main.36ba3d50.js"
   ]
 }
