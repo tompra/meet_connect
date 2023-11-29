@@ -1,4 +1,5 @@
 import mockData from './mock-data';
+import Welcome from '.Welcome';
 
 export const extractLocations = (events) => {
     try {
@@ -56,9 +57,9 @@ export const getAccessToken = async () => {
                     'https://bfumnimxia.execute-api.eu-central-1.amazonaws.com/dev/api/get-auth-url'
                 );
                 const result = await response.json();
-                console.log('result.authUrl', result.authUrl);
                 const { authUrl } = result;
-                return (window.location.href = authUrl);
+                // return (window.location.href = authUrl);
+                return { authUrl, getAccessToken };
             }
             return code && getToken(code);
         }

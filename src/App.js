@@ -52,7 +52,13 @@ const App = () => {
         <div className='App container-fluid pt-2 '>
             <div className='row d-flex flex-column justify-content-center align-items-center'>
                 {!localStorage.getItem('access_token') ? (
-                    <Welcome getAccessToken={() => getAccessToken()} />
+                    <Welcome
+                        getAccessToken={async () => {
+                            const { authUrl, getAccessToken } =
+                                await getAccessToken();
+                            window.location.href = authUrl;
+                        }}
+                    />
                 ) : (
                     <>
                         <div className='col-md-4 alerts-container'>
