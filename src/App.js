@@ -35,8 +35,6 @@ const App = () => {
         }
     };
 
-    console.log(localStorage.getItem('access_token'));
-
     useEffect(() => {
         let dangerTxt;
         if (navigator.onLine) {
@@ -54,8 +52,7 @@ const App = () => {
                 {!localStorage.getItem('access_token') ? (
                     <Welcome
                         getAccessToken={async () => {
-                            const { authUrl, getAccessToken } =
-                                await getAccessToken();
+                            const { authUrl } = await getAccessToken();
                             window.location.href = authUrl;
                         }}
                     />
