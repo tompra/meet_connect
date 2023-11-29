@@ -3,10 +3,11 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import EventList from './EventList';
 import CitySearch from './CitySearch';
 import NumberOfEvents from './NumberOfEvents';
+import Welcome from './Welcome';
+import Spinner from './Spinner';
 import { useEffect, useState } from 'react';
 import { getEvents, extractLocations, getAccessToken } from './api';
 import { InfoAlert, WarningAlert, DangerAlert } from './Alert';
-import Welcome from './Welcome';
 
 const App = () => {
     const [events, setEvents] = useState([]);
@@ -16,6 +17,7 @@ const App = () => {
     const [infoAlert, setInfoAlert] = useState('');
     const [warningAlert, setWarningAlert] = useState('');
     const [dangerAlert, setDangerAlert] = useState('');
+    const [loading, setLoading] = useState(true);
 
     const fetchData = async () => {
         try {
@@ -30,6 +32,7 @@ const App = () => {
 
             setEvents(filteredEvents.slice(0, currentNOE));
             setAllLocations(extractLocations(allEvents));
+            setLoading(false);
         } catch (error) {
             console.error('Error fetching events:', error);
         }
@@ -70,22 +73,28 @@ const App = () => {
                                 <DangerAlert text={dangerAlert} />
                             ) : null}
                         </div>
-                        <div className='col-md-6 mt-2'>
-                            <CitySearch
-                                allLocations={allLocations}
-                                setCurrentCity={setCurrentCity}
-                                setInfoAlert={setInfoAlert}
-                            />
-                        </div>
-                        <div className='col-md-6'>
-                            <NumberOfEvents
-                                setCurrentNOE={setCurrentNOE}
-                                setWarningAlert={setWarningAlert}
-                            />
-                        </div>
-                        <div className='col-md-6'>
-                            <EventList events={events} />
-                        </div>
+                        {loading ? (
+                            <Spinner />
+                        ) : (
+                            <>
+                                <div className='col-md-6 mt-2'>
+                                    <CitySearch
+                                        allLocations={allLocations}
+                                        setCurrentCity={setCurrentCity}
+                                        setInfoAlert={setInfoAlert}
+                                    />
+                                </div>
+                                <div className='col-md-6'>
+                                    <NumberOfEvents
+                                        setCurrentNOE={setCurrentNOE}
+                                        setWarningAlert={setWarningAlert}
+                                    />
+                                </div>
+                                <div className='col-md-6'>
+                                    <EventList events={events} />
+                                </div>
+                            </>
+                        )}
                     </>
                 )}
             </div>
