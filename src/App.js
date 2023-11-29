@@ -4,8 +4,9 @@ import EventList from './EventList';
 import CitySearch from './CitySearch';
 import NumberOfEvents from './NumberOfEvents';
 import { useEffect, useState } from 'react';
-import { getEvents, extractLocations } from './api';
+import { getEvents, extractLocations, getAccessToken } from './api';
 import { InfoAlert, WarningAlert, DangerAlert } from './Alert';
+import Welcome from './Welcome';
 
 const App = () => {
     const [events, setEvents] = useState([]);
@@ -34,6 +35,8 @@ const App = () => {
         }
     };
 
+    console.log(localStorage.getItem('access_token'));
+
     useEffect(() => {
         let dangerTxt;
         if (navigator.onLine) {
@@ -48,31 +51,39 @@ const App = () => {
     return (
         <div className='App container-fluid pt-2 '>
             <div className='row d-flex flex-column justify-content-center align-items-center'>
-                <div className='col-md-4 alerts-container'>
-                    {infoAlert.length ? <InfoAlert text={infoAlert} /> : null}
-                    {warningAlert.length ? (
-                        <WarningAlert text={warningAlert} />
-                    ) : null}
-                    {dangerAlert.length ? (
-                        <DangerAlert text={dangerAlert} />
-                    ) : null}
-                </div>
-                <div className='col-md-6 mt-2'>
-                    <CitySearch
-                        allLocations={allLocations}
-                        setCurrentCity={setCurrentCity}
-                        setInfoAlert={setInfoAlert}
-                    />
-                </div>
-                <div className='col-md-6'>
-                    <NumberOfEvents
-                        setCurrentNOE={setCurrentNOE}
-                        setWarningAlert={setWarningAlert}
-                    />
-                </div>
-                <div className='col-md-6'>
-                    <EventList events={events} />
-                </div>
+                {!localStorage.getItem('access_token') ? (
+                    <Welcome getAccessToken={() => getAccessToken()} />
+                ) : (
+                    <>
+                        <div className='col-md-4 alerts-container'>
+                            {infoAlert.length ? (
+                                <InfoAlert text={infoAlert} />
+                            ) : null}
+                            {warningAlert.length ? (
+                                <WarningAlert text={warningAlert} />
+                            ) : null}
+                            {dangerAlert.length ? (
+                                <DangerAlert text={dangerAlert} />
+                            ) : null}
+                        </div>
+                        <div className='col-md-6 mt-2'>
+                            <CitySearch
+                                allLocations={allLocations}
+                                setCurrentCity={setCurrentCity}
+                                setInfoAlert={setInfoAlert}
+                            />
+                        </div>
+                        <div className='col-md-6'>
+                            <NumberOfEvents
+                                setCurrentNOE={setCurrentNOE}
+                                setWarningAlert={setWarningAlert}
+                            />
+                        </div>
+                        <div className='col-md-6'>
+                            <EventList events={events} />
+                        </div>
+                    </>
+                )}
             </div>
         </div>
     );
