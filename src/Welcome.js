@@ -37,7 +37,7 @@ const Welcome = ({ getAccessToken }) => {
                         className='btn btn-primary fs-5'
                         onClick={handleLogin}
                     >
-                        Sign in with <b>Google </b>
+                        Sign in with <b>Google</b>
                         <img
                             src={googlelogo}
                             alt='google logo'

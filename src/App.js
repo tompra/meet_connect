@@ -51,39 +51,31 @@ const App = () => {
     return (
         <div className='App container-fluid pt-2 '>
             <div className='row d-flex flex-column justify-content-center align-items-center'>
-                {loading ? (
-                    <Spinner />
-                ) : (
-                    <>
-                        <div className='col-md-4 alerts-container'>
-                            {infoAlert.length ? (
-                                <InfoAlert text={infoAlert} />
-                            ) : null}
-                            {warningAlert.length ? (
-                                <WarningAlert text={warningAlert} />
-                            ) : null}
-                            {dangerAlert.length ? (
-                                <DangerAlert text={dangerAlert} />
-                            ) : null}
-                        </div>
-                        <div className='col-md-6 mt-2'>
-                            <CitySearch
-                                allLocations={allLocations}
-                                setCurrentCity={setCurrentCity}
-                                setInfoAlert={setInfoAlert}
-                            />
-                        </div>
-                        <div className='col-md-6'>
-                            <NumberOfEvents
-                                setCurrentNOE={setCurrentNOE}
-                                setWarningAlert={setWarningAlert}
-                            />
-                        </div>
-                        <div className='col-md-6'>
-                            <EventList events={events} />
-                        </div>
-                    </>
-                )}
+                <div className='col-md-4 alerts-container'>
+                    {infoAlert.length ? <InfoAlert text={infoAlert} /> : null}
+                    {warningAlert.length ? (
+                        <WarningAlert text={warningAlert} />
+                    ) : null}
+                    {dangerAlert.length ? (
+                        <DangerAlert text={dangerAlert} />
+                    ) : null}
+                </div>
+                <div className='col-md-6 mt-2'>
+                    <CitySearch
+                        allLocations={allLocations}
+                        setCurrentCity={setCurrentCity}
+                        setInfoAlert={setInfoAlert}
+                    />
+                </div>
+                <div className='col-md-6'>
+                    <NumberOfEvents
+                        setCurrentNOE={setCurrentNOE}
+                        setWarningAlert={setWarningAlert}
+                    />
+                </div>
+                <div className='col-md-6'>
+                    <EventList events={events} />
+                </div>
             </div>
         </div>
     );
