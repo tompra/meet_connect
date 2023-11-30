@@ -1,4 +1,5 @@
 import { useState } from 'react';
+// import 'animate.css';
 
 const Event = ({ event }) => {
     const [showHideBtn, setShowHideBtn] = useState(false);
@@ -36,9 +37,9 @@ const Event = ({ event }) => {
                 >
                     {showHideBtn ? 'Hide details' : 'Show details'}
                 </button>
-                {showHideBtn ? (
+                {showHideBtn && (
                     <div
-                        className={`details bg-primary text-white rounded p-3 right-aligned animate__animated `}
+                        className={`details bg-primary text-white rounded p-3 right-aligned animate__animated animate__fadeInRightBig`}
                     >
                         <h5 className='card-title'>Event Details</h5>
                         <p className='card-text'>
@@ -51,7 +52,14 @@ const Event = ({ event }) => {
                             </span>
                         </p>
                     </div>
-                ) : null}
+                )}
+                {!showHideBtn && (
+                    <div
+                        className={
+                            'details bg-primary text-white rounded p-3 right-aligned animate__animated animate__fadeOutRightBig'
+                        }
+                    ></div>
+                )}
             </div>
         </div>
     );

@@ -41,7 +41,6 @@ input[type='text'] {
 .right-aligned {
     top: -1px;
     right: -1px;
-    /* animation: slideInFromRight 0.5s ease; */
 }
 
 .alerts-container {
@@ -55,24 +54,6 @@ input[type='text'] {
     border-radius: 10px;
     box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 }
-
-/* @keyframes slideOutFromRight {
-    from {
-        transform: translateX(0);
-    }
-    to {
-        transform: translateX(100%);
-    }
-}
-
-@keyframes slideInFromRight {
-    from {
-        transform: translateX(100%);
-    }
-    to {
-        transform: translateX(0);
-    }
-} */
 
 @media (max-width: 768px) {
     .right-aligned {
