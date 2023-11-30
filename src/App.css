@@ -2,6 +2,7 @@
 .App {
     background-image: linear-gradient(to right, #141e30, #243b55);
     min-height: 100vh;
+    overflow-x: hidden;
 }
 .suggestions {
     position: absolute;
@@ -21,50 +22,46 @@ input[type='text'] {
     background-color: #0d6efd;
     color: white;
 }
+#event-list {
+    gap: 15px;
+    margin-top: 5rem;
+}
 .card-body {
     box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    overflow: hidden;
 }
 .details {
     position: absolute;
     z-index: 2;
     top: 0;
     box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
-    width: 100%;
+    width: 60%;
+    min-height: 14rem;
 }
 .right-aligned {
-    left: auto;
-    right: 100%;
-    animation: slideInFromLeft 0.5s ease;
+    top: -1px;
+    right: -1px;
+    /* animation: slideInFromRight 0.5s ease; */
 }
 
-.left-aligned {
-    left: 100%;
-    right: auto;
-    animation: slideInFromRight 0.5s ease;
-}
 .alerts-container {
     position: fixed;
     top: 5%;
     left: 0px;
     z-index: 1000;
 }
-.google-logo {
-    width: 1.2rem;
-    margin: 5px;
-    animation: fadeIn 1.5s ease-in-out;
-}
+
 .meet-logo {
     border-radius: 10px;
     box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
-    animation: fadeIn 1.5s ease-in-out;
 }
 
-@keyframes slideInFromLeft {
+/* @keyframes slideOutFromRight {
     from {
-        transform: translateX(-100%);
+        transform: translateX(0);
     }
     to {
-        transform: translateX(0);
+        transform: translateX(100%);
     }
 }
 
@@ -75,27 +72,92 @@ input[type='text'] {
     to {
         transform: translateX(0);
     }
-}
-
-@keyframes fadeIn {
-    0% {
-        opacity: 0;
-        transform: scale(0);
-    }
-    100% {
-        opacity: 1;
-        transform: scale(1);
-    }
-}
+} */
 
 @media (max-width: 768px) {
-    .right-aligned,
-    .left-aligned {
+    .right-aligned {
         top: 100%;
         right: 0;
         left: 0;
     }
+    .details {
+        width: 100%;
+        min-height: 100%;
+    }
     .alerts-container {
         top: 0%;
+    }
+}
+
+.dot-pulse {
+    position: relative;
+    left: -9980px;
+    top: 10px;
+    width: 10px;
+    height: 10px;
+    border-radius: 5px;
+    background-color: #fff;
+    color: #fff;
+    box-shadow: 9999px 0 0 -5px;
+    animation: dot-pulse 1.5s infinite linear;
+    animation-delay: 0.25s;
+}
+.dot-pulse::before,
+.dot-pulse::after {
+    content: '';
+    display: inline-block;
+    position: absolute;
+    top: 0;
+    width: 10px;
+    height: 10px;
+    border-radius: 5px;
+    background-color: #fff;
+    color: #fff;
+}
+.dot-pulse::before {
+    box-shadow: 9984px 0 0 -5px;
+    animation: dot-pulse-before 1.5s infinite linear;
+    animation-delay: 0s;
+}
+.dot-pulse::after {
+    box-shadow: 10014px 0 0 -5px;
+    animation: dot-pulse-after 1.5s infinite linear;
+    animation-delay: 0.5s;
+}
+
+@keyframes dot-pulse-before {
+    0% {
+        box-shadow: 9984px 0 0 -5px;
+    }
+    30% {
+        box-shadow: 9984px 0 0 2px;
+    }
+    60%,
+    100% {
+        box-shadow: 9984px 0 0 -5px;
+    }
+}
+@keyframes dot-pulse {
+    0% {
+        box-shadow: 9999px 0 0 -5px;
+    }
+    30% {
+        box-shadow: 9999px 0 0 2px;
+    }
+    60%,
+    100% {
+        box-shadow: 9999px 0 0 -5px;
+    }
+}
+@keyframes dot-pulse-after {
+    0% {
+        box-shadow: 10014px 0 0 -5px;
+    }
+    30% {
+        box-shadow: 10014px 0 0 2px;
+    }
+    60%,
+    100% {
+        box-shadow: 10014px 0 0 -5px;
     }
 }

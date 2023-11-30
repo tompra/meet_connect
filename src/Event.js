@@ -1,13 +1,11 @@
 import { useState } from 'react';
 
-const Event = ({ event, index }) => {
+const Event = ({ event }) => {
     const [showHideBtn, setShowHideBtn] = useState(false);
 
     const handleDetails = () => {
         setShowHideBtn(!showHideBtn);
     };
-
-    const detailsAlignment = index % 2 === 0 ? 'right-aligned' : 'left-aligned';
 
     const changeDate = new Date(event.created);
 
@@ -21,8 +19,8 @@ const Event = ({ event, index }) => {
     });
 
     return (
-        <div className='card'>
-            <div className='card-body d-flex flex-column justify-content-center align-items-center'>
+        <div className='card' style={{ height: '14rem' }}>
+            <div className='card-body d-flex flex-column justify-content-around align-items-start'>
                 <h5 className='card-title'>
                     Title: <span>{event.summary}</span>
                 </h5>
@@ -40,7 +38,7 @@ const Event = ({ event, index }) => {
                 </button>
                 {showHideBtn ? (
                     <div
-                        className={`details bg-primary text-white rounded p-3 ${detailsAlignment}`}
+                        className={`details bg-primary text-white rounded p-3 right-aligned animate__animated `}
                     >
                         <h5 className='card-title'>Event Details</h5>
                         <p className='card-text'>
