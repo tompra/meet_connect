@@ -24,7 +24,6 @@ describe('<NumberOfEvents /> component', () => {
             NumberOfEventsComponent.container.querySelector(
                 '#number-of-events'
             );
-
         expect(numberEventBox.value).toBe('32');
     });
     // user text input changes

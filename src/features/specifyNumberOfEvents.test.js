@@ -14,8 +14,8 @@ defineFeature(feature, (test) => {
 
         when('user view the list of events', async () => {
             AppDOM = AppComponent.container.firstChild;
-            const EventListDOM = AppDOM.querySelector('#event-list');
             await waitFor(() => {
+                const EventListDOM = AppDOM.querySelector('#event-list');
                 const EventListItems =
                     within(EventListDOM).queryAllByRole('listitem');
                 expect(EventListItems).toBeTruthy();
@@ -23,8 +23,8 @@ defineFeature(feature, (test) => {
         });
 
         then(/^(\d+) event should be displayed by default$/, async (arg0) => {
-            const EventListDOM = AppDOM.querySelector('#event-list');
             await waitFor(() => {
+                const EventListDOM = AppDOM.querySelector('#event-list');
                 const EventListItems =
                     within(EventListDOM).queryAllByRole('listitem');
                 expect(EventListItems).toHaveLength(32);
@@ -36,8 +36,8 @@ defineFeature(feature, (test) => {
         given('user is viewing a list of events', async () => {
             AppComponent = render(<App />);
             AppDOM = AppComponent.container.firstChild;
-            const EventListDOM = AppDOM.querySelector('#event-list');
             await waitFor(() => {
+                const EventListDOM = AppDOM.querySelector('#event-list');
                 const EventListItems =
                     within(EventListDOM).queryAllByRole('listitem');
                 expect(EventListItems).toBeTruthy();

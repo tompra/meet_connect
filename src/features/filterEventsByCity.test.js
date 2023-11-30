@@ -20,8 +20,8 @@ defineFeature(feature, (test) => {
 
         then('user should see the list of all upcoming events.', async () => {
             const AppDOM = AppComponent.container.firstChild;
-            const EventListDOM = AppDOM.querySelector('#event-list');
             await waitFor(() => {
+                const EventListDOM = AppDOM.querySelector('#event-list');
                 const EventListItems =
                     within(EventListDOM).queryAllByRole('listitem');
                 expect(EventListItems.length).toBe(32);
@@ -41,10 +41,12 @@ defineFeature(feature, (test) => {
         when('user starts typing in the city textbox', async () => {
             const user = userEvent.setup();
             const AppDOM = AppComponent.container.firstChild;
-            CitySearchDOM = AppDOM.querySelector('#city-search');
-            const citySearchInput =
-                within(CitySearchDOM).queryByRole('textbox');
-            await user.type(citySearchInput, 'Berlin');
+            await waitFor(async () => {
+                CitySearchDOM = AppDOM.querySelector('#city-search');
+                const citySearchInput =
+                    within(CitySearchDOM).queryByRole('textbox');
+                await user.type(citySearchInput, 'Berlin');
+            });
         });
 
         then(
@@ -71,9 +73,11 @@ defineFeature(feature, (test) => {
             AppComponent = render(<App />);
             const user = userEvent.setup();
             AppDOM = AppComponent.container.firstChild;
-            CitySearchDOM = AppDOM.querySelector('#city-search');
-            citySearchInput = within(CitySearchDOM).queryByRole('textbox');
-            await user.type(citySearchInput, 'Berlin');
+            await waitFor(async () => {
+                CitySearchDOM = AppDOM.querySelector('#city-search');
+                citySearchInput = within(CitySearchDOM).queryByRole('textbox');
+                await user.type(citySearchInput, 'Berlin');
+            });
         });
 
         and('the list of suggested cities is showing', () => {

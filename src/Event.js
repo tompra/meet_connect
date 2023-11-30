@@ -1,5 +1,4 @@
 import { useState } from 'react';
-// import 'animate.css';
 
 const Event = ({ event }) => {
     const [showHideBtn, setShowHideBtn] = useState(false);
@@ -52,13 +51,6 @@ const Event = ({ event }) => {
                             </span>
                         </p>
                     </div>
-                )}
-                {!showHideBtn && (
-                    <div
-                        className={
-                            'details bg-primary text-white rounded p-3 right-aligned animate__animated animate__fadeOutRightBig'
-                        }
-                    ></div>
                 )}
             </div>
         </div>

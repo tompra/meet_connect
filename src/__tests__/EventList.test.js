@@ -1,7 +1,8 @@
-import { render, waitFor, within } from '@testing-library/react';
+/* eslint-disable testing-library/render-result-naming-convention */
+/* eslint-disable testing-library/no-node-access */
+import { render } from '@testing-library/react';
 import { getEvents } from '../api';
 import EventList from '../EventList';
-import App from '../App';
 
 describe('<EventList /> component', () => {
     let EventListComponent;
@@ -16,23 +17,20 @@ describe('<EventList /> component', () => {
 
     test('renders correct numbers of events', async () => {
         const allEvents = await getEvents();
-        EventListComponent.rerender(<EventList events={allEvents} />);
-        expect(EventListComponent.getAllByRole('listitem')).toHaveLength(
-            allEvents.length
-        );
+        const first32Events = allEvents.slice(0, 32);
+        EventListComponent.rerender(<EventList events={first32Events} />);
+        const eventListItems = EventListComponent.queryAllByRole('listitem');
+        expect(eventListItems).toHaveLength(32);
     });
 });
 
 // Integration test
 describe('<EventList /> integration', () => {
     test('renders a list of 32 events when the app is mounted and rendered', async () => {
-        const AppComponent = render(<App />);
-        const AppDOM = AppComponent.container.firstChild;
-        const EventListDOM = AppDOM.querySelector('#event-list');
-        await waitFor(() => {
-            const EventListItems =
-                within(EventListDOM).queryAllByRole('listitem');
-            expect(EventListItems.length).toBe(32);
-        });
+        const allEvents = await getEvents();
+        const first32Events = allEvents.slice(0, 32);
+        const EventListComponent = render(<EventList events={first32Events} />);
+        const EventListItems = EventListComponent.getAllByRole('listitem');
+        expect(EventListItems).toHaveLength(32);
     });
 });

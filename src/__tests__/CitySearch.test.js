@@ -1,4 +1,4 @@
-import { render, within } from '@testing-library/react';
+import { render, within, waitFor } from '@testing-library/react';
 import CitySearch from '../CitySearch';
 import userEvent from '@testing-library/user-event';
 import { getEvents, extractLocations } from '../api';
@@ -120,16 +120,18 @@ describe('<CitySearch /> integration', () => {
         const AppComponent = render(<App />);
         const AppDOM = AppComponent.container.firstChild;
 
-        const CitySearchDOM = AppDOM.querySelector('#city-search');
-        const cityTextBox = within(CitySearchDOM).queryByRole('textbox');
-        await user.click(cityTextBox);
+        await waitFor(async () => {
+            const CitySearchDOM = AppDOM.querySelector('#city-search');
+            const cityTextBox = within(CitySearchDOM).queryByRole('textbox');
+            await user.click(cityTextBox);
 
-        const allEvents = await getEvents();
-        const allLocations = extractLocations(allEvents);
+            const allEvents = await getEvents();
+            const allLocations = extractLocations(allEvents);
 
-        const suggestionListItems =
-            within(CitySearchDOM).queryAllByRole('listitem');
+            const suggestionListItems =
+                within(CitySearchDOM).queryAllByRole('listitem');
 
-        expect(suggestionListItems.length).toBe(allLocations.length + 1);
+            expect(suggestionListItems.length).toBe(allLocations.length + 1);
+        });
     });
 });
