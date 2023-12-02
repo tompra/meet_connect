@@ -1,6 +1,6 @@
 import App from '../App';
 import { loadFeature, defineFeature } from 'jest-cucumber';
-import { render, waitFor, within } from '@testing-library/react';
+import { render, waitFor, within, act } from '@testing-library/react';
 import { getEvents } from '../api';
 import userEvent from '@testing-library/user-event';
 
@@ -20,11 +20,13 @@ defineFeature(feature, (test) => {
 
         then('user should see the list of all upcoming events.', async () => {
             const AppDOM = AppComponent.container.firstChild;
-            await waitFor(() => {
-                const EventListDOM = AppDOM.querySelector('#event-list');
-                const EventListItems =
-                    within(EventListDOM).queryAllByRole('listitem');
-                expect(EventListItems.length).toBe(32);
+            await act(async () => {
+                await waitFor(() => {
+                    const EventListDOM = AppDOM.querySelector('#event-list');
+                    const EventListItems =
+                        within(EventListDOM).queryAllByRole('listitem');
+                    expect(EventListItems.length).toBe(32);
+                });
             });
         });
     });

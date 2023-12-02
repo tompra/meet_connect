@@ -20,7 +20,7 @@ const Event = ({ event }) => {
 
     return (
         <div className='card' style={{ height: '14rem' }}>
-            <div className='card-body d-flex flex-column justify-content-around align-items-start'>
+            <div className='card-body d-flex flex-column justify-content-around align-items-start bg-secondary-subtle'>
                 <h5 className='card-title'>
                     Title: <span>{event.summary}</span>
                 </h5>

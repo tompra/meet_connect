@@ -1,8 +1,9 @@
+/* eslint-disable testing-library/no-render-in-setup */
 /* eslint-disable testing-library/no-wait-for-multiple-assertions */
 /* eslint-disable testing-library/no-node-access */
 /* eslint-disable testing-library/render-result-naming-convention */
 /* eslint-disable testing-library/no-wait-for-side-effects */
-import { render, within, waitFor } from '@testing-library/react';
+import { render, within, waitFor, act } from '@testing-library/react';
 import App from '../App';
 import userEvent from '@testing-library/user-event';
 import { getEvents } from '../api';
@@ -14,20 +15,28 @@ describe('<App /> component', () => {
         AppDOM = render(<App />).container.firstChild;
     });
     test('renders list of events', async () => {
-        await waitFor(() => {
-            expect(AppDOM.querySelector('#event-list')).toBeInTheDocument();
+        await act(async () => {
+            await waitFor(() => {
+                expect(AppDOM.querySelector('#event-list')).toBeInTheDocument();
+            });
         });
     });
     test('render city search', async () => {
-        await waitFor(() => {
-            expect(AppDOM.querySelector('#city-search')).toBeInTheDocument();
+        await act(async () => {
+            await waitFor(() => {
+                expect(
+                    AppDOM.querySelector('#city-search')
+                ).toBeInTheDocument();
+            });
         });
     });
     test('render number of events', async () => {
-        await waitFor(() => {
-            expect(
-                AppDOM.querySelector('#number-of-events')
-            ).toBeInTheDocument();
+        await act(async () => {
+            await waitFor(() => {
+                expect(
+                    AppDOM.querySelector('#number-of-events')
+                ).toBeInTheDocument();
+            });
         });
     });
 });
@@ -40,7 +49,6 @@ describe('<App /> integration', () => {
 
         await waitFor(async () => {
             const CitySearchDOM = AppDOM.querySelector('#city-search');
-            expect(CitySearchDOM).toBeInTheDocument();
             const CitySearchInput =
                 within(CitySearchDOM).queryByRole('textbox');
             await user.type(CitySearchInput, 'Berlin');

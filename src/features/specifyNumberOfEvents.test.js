@@ -1,6 +1,6 @@
 import App from '../App';
 import { loadFeature, defineFeature } from 'jest-cucumber';
-import { render, waitFor, within } from '@testing-library/react';
+import { render, waitFor, within, act } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 
 const feature = loadFeature('./src/features/specifyNumberOfEvents.feature');
@@ -14,20 +14,24 @@ defineFeature(feature, (test) => {
 
         when('user view the list of events', async () => {
             AppDOM = AppComponent.container.firstChild;
-            await waitFor(() => {
-                const EventListDOM = AppDOM.querySelector('#event-list');
-                const EventListItems =
-                    within(EventListDOM).queryAllByRole('listitem');
-                expect(EventListItems).toBeTruthy();
+            await act(async () => {
+                await waitFor(() => {
+                    const EventListDOM = AppDOM.querySelector('#event-list');
+                    const EventListItems =
+                        within(EventListDOM).queryAllByRole('listitem');
+                    expect(EventListItems).toBeTruthy();
+                });
             });
         });
 
         then(/^(\d+) event should be displayed by default$/, async (arg0) => {
-            await waitFor(() => {
-                const EventListDOM = AppDOM.querySelector('#event-list');
-                const EventListItems =
-                    within(EventListDOM).queryAllByRole('listitem');
-                expect(EventListItems).toHaveLength(32);
+            await act(async () => {
+                await waitFor(() => {
+                    const EventListDOM = AppDOM.querySelector('#event-list');
+                    const EventListItems =
+                        within(EventListDOM).queryAllByRole('listitem');
+                    expect(EventListItems).toHaveLength(32);
+                });
             });
         });
     });

@@ -1,9 +1,11 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import EventList from './EventList';
 import CitySearch from './CitySearch';
 import NumberOfEvents from './NumberOfEvents';
 import Loading from './Loading';
+import CityEventCharts from './CityEventsChart';
 import { useEffect, useState } from 'react';
 import { getEvents, extractLocations } from './api';
 import { InfoAlert, WarningAlert, DangerAlert } from './Alert';
@@ -77,6 +79,12 @@ const App = () => {
                             <NumberOfEvents
                                 setCurrentNOE={setCurrentNOE}
                                 setWarningAlert={setWarningAlert}
+                            />
+                        </div>
+                        <div className='col-md-12'>
+                            <CityEventCharts
+                                allLocations={allLocations}
+                                events={events}
                             />
                         </div>
                         <div className='col-md-12'>
