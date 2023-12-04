@@ -54,7 +54,12 @@ const CityEventsChart = ({ allLocations, events }) => {
                     tick={{ fontSize: 14, fill: '#fff' }}
                 />
                 <Tooltip cursor={{ strokeDasharray: '3 3' }} />
-                <Scatter name='A school' data={data} fill='#0088FE' />
+                <Scatter
+                    name='A school'
+                    data={data}
+                    fill='#0088FE'
+                    shape='diamond'
+                />
             </ScatterChart>
         </ResponsiveContainer>
     );
