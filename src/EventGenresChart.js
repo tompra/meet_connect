@@ -29,8 +29,19 @@ const EventGenresChart = ({ events }) => {
     }) => {
         const RADIAN = Math.PI / 180;
         const radius = outerRadius;
-        const x = cx + radius * Math.cos(-midAngle * RADIAN) * 1.07;
-        const y = cy + radius * Math.sin(-midAngle * RADIAN) * 1.07;
+        const isSmallScreen = window.innerWidth <= 320;
+        let x, y;
+
+        if (isSmallScreen) {
+            if (isSmallScreen) {
+                x = cx + (radius - 25) * Math.cos(-midAngle * RADIAN);
+                y = cy + (radius - 25) * Math.sin(-midAngle * RADIAN);
+            } else {
+                x = cx + radius * Math.cos(-midAngle * RADIAN) * 1.1;
+                y = cy + radius * Math.sin(-midAngle * RADIAN) * 1.1;
+            }
+        }
+
         return percent ? (
             <text
                 key={`label-${index}`}

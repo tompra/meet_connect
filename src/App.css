@@ -58,6 +58,15 @@ input[type='text'] {
     display: grid;
     grid-template-columns: 1fr 1fr;
 }
+.pie-chart-container {
+    width: 100%;
+}
+.recharts-responsive-container,
+svg.recharts-surface,
+.charts-container {
+    margin: 0;
+    padding: 0;
+}
 
 @media (max-width: 320px) {
     .city-chart-container {
@@ -68,9 +77,9 @@ input[type='text'] {
     .pie-chart-container {
         right: 3%;
         top: 0px;
+        width: 80%;
     }
-    .city-chart-container,
-    .pie-chart-container {
+    .city-chart-container {
         height: 99%;
         width: 99%;
     }
