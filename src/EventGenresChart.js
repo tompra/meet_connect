@@ -67,15 +67,7 @@ const EventGenresChart = ({ events }) => {
                         />
                     ))}
                 </Pie>
-                <Legend
-                    verticalAlign='bottom'
-                    margin={{
-                        top: 60,
-                        right: 60,
-                        bottom: 60,
-                        left: 60,
-                    }}
-                />
+                <Legend verticalAlign='bottom' />
             </PieChart>
         </ResponsiveContainer>
     );
