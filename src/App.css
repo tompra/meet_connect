@@ -59,6 +59,27 @@ input[type='text'] {
     grid-template-columns: 1fr 1fr;
 }
 
+@media (max-width: 320px) {
+    .city-chart-container {
+        top: 50%;
+        left: 40%;
+        transform: translate(-50%, -50%);
+    }
+    .pie-chart-container {
+        right: 3%;
+        top: 0px;
+    }
+    .city-chart-container,
+    .pie-chart-container {
+        height: 99%;
+        width: 99%;
+    }
+    .recharts-legend-wrapper {
+        top: 95%;
+        bottom: 0px;
+    }
+}
+
 @media (max-width: 768px) {
     .right-aligned {
         top: 100%;
@@ -74,6 +95,7 @@ input[type='text'] {
     }
     .charts-container {
         grid-template-columns: 1fr;
+        flex-direction: column;
     }
 }
 
