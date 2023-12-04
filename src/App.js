@@ -6,6 +6,7 @@ import CitySearch from './CitySearch';
 import NumberOfEvents from './NumberOfEvents';
 import Loading from './Loading';
 import CityEventCharts from './CityEventsChart';
+import EventGenresChart from './EventGenresChart';
 import { useEffect, useState } from 'react';
 import { getEvents, extractLocations } from './api';
 import { InfoAlert, WarningAlert, DangerAlert } from './Alert';
@@ -81,11 +82,12 @@ const App = () => {
                                 setWarningAlert={setWarningAlert}
                             />
                         </div>
-                        <div className='col-md-12'>
+                        <div className='col-md-12 col-12 charts-container'>
                             <CityEventCharts
                                 allLocations={allLocations}
                                 events={events}
                             />
+                            <EventGenresChart events={events} />
                         </div>
                         <div className='col-md-12'>
                             <EventList

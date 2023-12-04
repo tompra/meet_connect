@@ -54,6 +54,10 @@ input[type='text'] {
     border-radius: 10px;
     box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 }
+.charts-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
 
 @media (max-width: 768px) {
     .right-aligned {
@@ -67,6 +71,9 @@ input[type='text'] {
     }
     .alerts-container {
         top: 0%;
+    }
+    .charts-container {
+        grid-template-columns: 1fr;
     }
 }
 

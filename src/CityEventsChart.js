@@ -7,8 +7,6 @@ import {
     CartesianGrid,
     Tooltip,
     ResponsiveContainer,
-    Line,
-    LineChart,
 } from 'recharts';
 
 const CityEventsChart = ({ allLocations, events }) => {
@@ -46,16 +44,17 @@ const CityEventsChart = ({ allLocations, events }) => {
                     name='City'
                     angle={60}
                     interval={0}
-                    tick={{ dx: 20, dy: 40, fontSize: 14 }}
+                    tick={{ dx: 20, dy: 40, fontSize: 14, fill: '#fff' }}
                 />
                 <YAxis
                     type='number'
                     dataKey='count'
                     name='Number of events'
                     allowDecimals={false}
+                    tick={{ fontSize: 14, fill: '#fff' }}
                 />
                 <Tooltip cursor={{ strokeDasharray: '3 3' }} />
-                <Scatter name='A school' data={data} fill='#8884d8' />
+                <Scatter name='A school' data={data} fill='#0088FE' />
             </ScatterChart>
         </ResponsiveContainer>
     );
