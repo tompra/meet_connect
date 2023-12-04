@@ -29,29 +29,18 @@ const EventGenresChart = ({ events }) => {
     }) => {
         const RADIAN = Math.PI / 180;
         const radius = outerRadius;
-        const isSmallScreen = window.innerWidth <= 320;
-        let x, y;
-
-        if (isSmallScreen) {
-            if (isSmallScreen) {
-                x = cx + (radius - 25) * Math.cos(-midAngle * RADIAN);
-                y = cy + (radius - 25) * Math.sin(-midAngle * RADIAN);
-            } else {
-                x = cx + radius * Math.cos(-midAngle * RADIAN) * 1.1;
-                y = cy + radius * Math.sin(-midAngle * RADIAN) * 1.1;
-            }
-        }
-
+        const x = cx + radius * Math.cos(-midAngle * RADIAN) * 1.07;
+        const y = cy + radius * Math.sin(-midAngle * RADIAN) * 1.07;
         return percent ? (
             <text
                 key={`label-${index}`}
                 x={x}
                 y={y}
-                fill='#fff'
+                fill={COLORS[index]}
                 textAnchor={x > cx ? 'start' : 'end'}
                 dominantBaseline='central'
             >
-                {`${genres[index]} ${(percent * 100).toFixed(0)}%`}
+                {`${(percent * 100).toFixed(0)}%`}
             </text>
         ) : null;
     };
