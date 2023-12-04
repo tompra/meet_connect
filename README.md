@@ -21,14 +21,21 @@ Merging serverles computing and PWAs paves the way for modern web development wi
 5. Run the project:
    `npm run start`
 
-## Project dependecies
+## Project technologies
 
 -   React
+-   Node
 -   Jest
+-   Puppeteer
+-   Cucumber
+-   Serverless
+-   Gherkin
+-   PWA
+-   Google Calendar API
 
-## API
+## Project dependecies
 
--   Google Calendar
+Check the package.json
 
 ## Key features
 
