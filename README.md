@@ -1,5 +1,7 @@
 # MeetConnect
 
+![meetConnectMain](https://github.com/tompra/meet_connect/assets/143709419/97a8e361-bb66-4744-8832-a6ddc3381214)
+
 ## Project description
 
 Build a serverless, progressive web application (PWA) with React using a test-driven development technique.
@@ -23,19 +25,19 @@ Merging serverles computing and PWAs paves the way for modern web development wi
 
 ## Project technologies
 
--   React
--   Node
--   Jest
--   Puppeteer
--   Cucumber
--   Serverless
--   Gherkin
--   PWA
--   Google Calendar API
-
-## Project dependecies
-
-Check the package.json
+| Dependency               | Description                                                                          |
+|--------------------------|--------------------------------------------------------------------------------------|
+| @testing-library/jest-dom| Provides custom Jest matchers for asserting on DOM elements.                         |
+| @testing-library/react   | Provides utilities for testing React components.                                      |
+| @testing-library/user-event | Provides utilities for simulating user interactions with the DOM.                   |
+| atatus-spa               | A performance monitoring tool for single-page applications (SPA).                     |
+| bootstrap                | A popular CSS framework for building responsive and mobile-first websites.            |
+| react                    | A JavaScript library for building user interfaces.                                    |
+| react-dom                | Provides DOM-specific methods that can be used with React.                            |
+| react-scripts            | Provides scripts and configuration used by Create React App.                          |
+| recharts                 | A charting library for React based on D3.                                             |
+| jest-cucumber            | A library for writing Cucumber-like BDD test scenarios with Jest.                     |
+| puppeteer                | A Node library which provides a high-level API to control headless Chrome over the DevTools Protocol. |
 
 ## Key features
 
